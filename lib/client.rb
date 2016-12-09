@@ -17,7 +17,12 @@ class Client
     clients
   end
 
+  def save()
+    DB.exec("INSERT INTO clients (name, stylist_id) VALUES ('#{@name}', #{@stylist_id});")
+  end
 
-
+  def ==(another_client)
+    self.name == another_client.name && self.stylist_id == another_client.stylist_id
+  end
 
 end

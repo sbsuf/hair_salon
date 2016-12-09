@@ -23,14 +23,13 @@ describe('viewing all of the stylists', {:type => :feature}) do
   end
 end
 
-describe('get names for a single stylist', {:type => :feature}) do
-  it('allows a user to click a list to see the tasks and details for it') do
-    test_list = List.new({:name => "Coding work", :id => nil})
-    test_list.save()
-    test_task = Task.new({:description => "learn SQL", :list_id => test_list.id()})
-    test_task.save()
-    visit('/lists')
-    click_link(test_list.name())
-    expect(page).to have_content(test_task.description())
+describe('adding clients to a stylist', {:type => :feature}) do
+  it('allows a user to add a client to a stylist') do
+    test_stylist = Stylist.new({:name => "case you", :id => nil})
+    test_stylist.save()
+    visit("/stylists/#{test_stylist.id()}")
+    fill_in("name", {:with => "handsom man"})
+    click_button("Add a client")
+    expect(page).to have_content("Success")
   end
 end

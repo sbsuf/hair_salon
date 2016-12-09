@@ -37,13 +37,14 @@ class Stylist
     clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{self.id()};")
     clients.each do |client|
       name = client.fetch("name")
+      id = client.fetch("id").to_i()
       stylist_id = client.fetch("stylist_id").to_i()
-      stylist_client.push(Client.new({:name => name, :stylist_id => stylist_id}))
+      stylist_client.push(Client.new({:name => name, :stylist_id => stylist_id , id: id}))
     end
     stylist_client
   end
 
-  def update()
+  def update(attributes)
     @name = attributes.fetch(:name)
     @id = self.id()
     DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{@id};")

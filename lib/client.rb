@@ -1,5 +1,5 @@
 class Client
-  attr_reader(:name, :stylist_id, :id)
+  attr_reader(:id, :name, :stylist_id)
 
   def initialize(attributes)
     @name = attributes.fetch(:name)
@@ -34,10 +34,9 @@ class Client
     found_client
   end
 
-  def update()
+  def update(attributes)
     @name = attributes.fetch(:name)
-    @id = self.id()
-    DB.exec("UPDATE clients SET name = '#{@name}', stylist_id = #{@stylist_id} WHERE id = #{@id};")
+    DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{@id};")
   end
 
   def delete()

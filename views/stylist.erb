@@ -5,10 +5,9 @@
 
   <ul>
     <% @stylist.clients().each() do |client| %>
-      <li><%= client.name() %> </li>
+      <li><a href="/clients/<%= client.id() %>"><%= client.name() %> client</a></li>
     <% end %>
   </ul>
-
   <% else %>
     <p>There are no client under this hair stylist!</p>
   <% end %>

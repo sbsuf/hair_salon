@@ -42,6 +42,17 @@ class Stylist
     stylist_client
   end
 
+  def update()
+    @name = attributes.fetch(:name)
+    @id = self.id()
+    DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
+
+  def delete()
+    DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
+  end
+
 
 
 

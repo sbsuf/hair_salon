@@ -22,10 +22,10 @@ class Stylist
     @id = result.first().fetch("id").to_i()
   end
 
-  def self.find()
+  def self.find(id)
     found_stylist = nil
     Stylist.all().each() do |stylist|
-      if stylist.id() == (id)
+      if stylist.id() .== (id)
         found_stylist = stylist
       end
     end
@@ -38,6 +38,7 @@ class Stylist
     clients.each do |client|
       name = client.fetch("name")
       stylist_id = client.fetch("stylist_id").to_i()
+      stylist_client.push(Client.new({:name => name, :stylist_id => stylist_id}))
     end
     stylist_client
   end

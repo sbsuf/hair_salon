@@ -84,3 +84,10 @@ delete("/stylists/:id") do
   @stylist = Stylist.all()
   erb(:index)
 end
+
+delete("/clients/:id") do
+    @client = Client.find(params.fetch("id").to_i())
+    @client.delete()
+    @client = Client.all()
+    erb(:index)
+end

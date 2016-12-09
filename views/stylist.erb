@@ -1,7 +1,10 @@
-<h1><%= @stylist.name() %></h1>
+<h1>
+  Welcome you: My name is Stylist <%= @stylist.name() %>
+</h1>
+
 
 <% if @stylist.clients().any?() %>
-  <h3>Here are all the clients under this stylist:</h3>
+  <h3>Here are all the clients under me:</h3>
 
   <ul>
     <% @stylist.clients().each() do |client| %>
@@ -12,7 +15,7 @@
     <p>There are no client under this hair stylist!</p>
   <% end %>
 
-  <h3>Add a client to <%= @stylist.name() %> </h3>
+  <h3>Add a client to stylist <%= @stylist.name() %> </h3>
   <form action="/clients" method="post">
     <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
 
@@ -25,6 +28,7 @@
 
 
 <a href="/">Home</a>
+</br>
 <a href="/stylists">View All Lists</a>
-<a href="/stylists/new">Add New List</a>
-<a href="/stylists/new">Add New Task</a>
+</br>
+<a href="/stylists/new">Add New Stylist</a>

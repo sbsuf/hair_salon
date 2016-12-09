@@ -51,4 +51,8 @@ class Stylist
   def delete()
     DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
   end
+
+  def ==(another_stylist)
+    self.name == another_stylist.name && self.id == another_stylist.id
+  end
 end

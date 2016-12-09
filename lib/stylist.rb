@@ -17,7 +17,20 @@ class Stylist
     stylists
   end
 
+  def save()
+    result = DB.exec("INSERT INTO stylists (name) VALUES ('#{@name}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
+  end
 
+  def self.find()
+    found_stylist = nil
+    Stylist.all().each() do |stylist|
+      if stylist.id() == (id)
+        found_stylist = stylist
+      end
+    end
+    found_stylist
+  end
 
 
 
